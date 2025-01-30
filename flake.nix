@@ -109,7 +109,7 @@
               "snuff" = {
                 hashedPassword = "$2b$05$fcnxDZwkv8rWCll4FPP8hupmDPDoty01FrarPSf1cIYtdbCO6XHSa";
               };
-              "antosha" = {
+              "antoshka" = {
                 hashedPassword = "$2b$05$yxgVqFP2OF6xV/m5xcXu2ORwJ4Q2qdAgYX9v4t.mpZMKEqmne3GQe";
               };
             };
