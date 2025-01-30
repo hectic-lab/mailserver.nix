@@ -69,8 +69,8 @@
             };
 
             users.users.root.openssh.authorizedKeys.keys = [
-                ''ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILJHnBiiapioSPXJJhi/n+x0Gy1MDEoSh4s5zO+V3jJn yukkop@wsl''
-                ''ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBKPbIJATVyAw7F7vBZbHkCODXFo5gvDyqhuU0gnNUNH snuff@jorge-desktop''
+                ''ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH+jOR9gh9SqcqJDh1PqKkXDYbfjf22MhcqL6OTfUEvG yukkop@nixos''
+                ''ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFouceNUxI3bGC24/hfA8J3VuBpvTcZh3KhixgrMiLte snuff@jorge-desktop''
             ];
 
             services.openssh = {
