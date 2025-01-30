@@ -33,8 +33,8 @@
       };
   }) // {
       # test on vm
-      # `nix run .#nixosConfigurations.accord.config.system.build.vm`
-      nixosConfigurations.accord =
+      # `nix run .#nixosConfigurations.default.config.system.build.vm`
+      nixosConfigurations.default =
       let
         system = "x86_64-linux";
       in
@@ -125,17 +125,17 @@
         };
       };
 
-      deploy.nodes.accord = let
-        inherit (self.nixosConfigurations.accord.config.nixpkgs) system;
+      deploy.nodes.default = let
+        inherit (self.nixosConfigurations.default.config.nixpkgs) system;
       in {
-        hostname = "accord";
+        hostname = "lab";
         fastConnection = true;
         profilesOrder = [ "system" ];
         sshOpts = [ ];
         profiles."system" = {
           sshUser = "root";
           path = deploy-rs.lib.${system}.activate.nixos
-            self.nixosConfigurations.accord;
+            self.nixosConfigurations.default;
           user = "root";
         };
       };
