@@ -142,7 +142,28 @@
         "deploy-rs": "deploy-rs",
         "nixos-mailserver": "nixos-mailserver",
         "nixpkgs": "nixpkgs_2",
-        "y-util": "y-util"
+        "util": "util"
+      }
+    },
+    "rust-overlay": {
+      "inputs": {
+        "nixpkgs": [
+          "util",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1738290352,
+        "narHash": "sha256-YKOHUmc0Clm4tMV8grnxYL4IIwtjTayoq/3nqk0QM7k=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "b031b584125d33d23a0182f91ddbaf3ab4880236",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
       }
     },
     "systems": {
@@ -157,6 +178,27 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "util": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "rust-overlay": "rust-overlay"
+      },
+      "locked": {
+        "lastModified": 1738497559,
+        "narHash": "sha256-G9ri9WMkDwJvU27veCJw/iIhJMiav5Z3qcfF4ATObnI=",
+        "owner": "hectic-lab",
+        "repo": "util.nix",
+        "rev": "915bd270f36a9e280062a2c00b0114a2f0024dbf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hectic-lab",
+        "repo": "util.nix",
         "type": "github"
       }
     },
@@ -175,26 +217,6 @@
       "original": {
         "owner": "numtide",
         "repo": "flake-utils",
-        "type": "github"
-      }
-    },
-    "y-util": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1737765932,
-        "narHash": "sha256-IxmQZ+EzH/vWYNE2rUfkv+027UVYAuN+Et3T/H44XjI=",
-        "owner": "yukkop",
-        "repo": "y.util.nix",
-        "rev": "f13db17a4f896419945eb5f2d52d470bf4442571",
-        "type": "github"
-      },
-      "original": {
-        "owner": "yukkop",
-        "repo": "y.util.nix",
         "type": "github"
       }
     }

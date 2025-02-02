@@ -10,19 +10,19 @@
       url = "github:serokell/deploy-rs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    y-util = {
-      url = "github:yukkop/y.util.nix";
+    util = {
+      url = "github:hectic-lab/util.nix";
       inputs.nixpkgs.follows = "nixpkgs"; 
     };
   };
 
-  outputs = { self, nixpkgs, deploy-rs, y-util, nixos-mailserver }:
+  outputs = { self, nixpkgs, deploy-rs, util, nixos-mailserver }:
     let
       lib = nixpkgs.lib;
 
       overlays = [ ];
 
-      forAllSystemsWithPkgs = y-util.lib.forAllSystemsWithPkgs overlays;
+      forAllSystemsWithPkgs = util.lib.forAllSystemsWithPkgs overlays;
     in
     forAllSystemsWithPkgs ({ system, pkgs }:
     {
