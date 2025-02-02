@@ -29,7 +29,10 @@
       packages.${system} = { };
       devShells.${system}.default = pkgs.mkShell { };
       nixosModules.${system} = {
-        mailserver = import ./mail.nix;
+        mailserver = { ... }: { imports = [
+	  (import ./mail.nix)
+          nixos-mailserver.nixosModules.mailserver
+        ]; };
       };
   }) // {
       # test on vm
@@ -41,10 +44,10 @@
       nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
-          ( nixos-mailserver.nixosModules.mailserver )
-          ( import ./mail.nix )
+          self.nixosModules.${system}.mailserver
           ({ pkgs, modulesPath, ... }: {
             imports = [
+              (modulesPath + "/profiles/qemu-guest.nix")
             ];
 
             environment.systemPackages = with pkgs; [ 
@@ -141,4 +144,3 @@
       };
   };
 }
-
