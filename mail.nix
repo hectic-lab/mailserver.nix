@@ -1,19 +1,22 @@
-{ lib, config, ... }: 
-let
+{
+  lib,
+  config,
+  ...
+}: let
   cfg = config.services.mailserver;
-  transform_login_accounts = domain: input: builtins.listToAttrs (map (key: {
+  transform_login_accounts = domain: input:
+    builtins.listToAttrs (map (key: {
       name = key + "@" + domain;
       value = input.${key};
     }) (builtins.attrNames input));
-in
-{
+in {
   options = {
-      services.mailserver.enable = lib.mkEnableOption "Mail server";
-      services.mailserver.domain = lib.mkOption {
-        type = lib.types.str;
-        description = "The domain name of the mail server";
-      };
-      services.mailserver.loginAccounts = lib.mkOption {
+    services.mailserver.enable = lib.mkEnableOption "Mail server";
+    services.mailserver.domain = lib.mkOption {
+      type = lib.types.str;
+      description = "The domain name of the mail server";
+    };
+    services.mailserver.loginAccounts = lib.mkOption {
       type = lib.types.attrsOf (
         lib.types.submodule {
           options = {
@@ -21,21 +24,22 @@ in
               type = lib.types.str;
             };
           };
-        });
+        }
+      );
 
-        default = {};
-        description = "A list of all login accounts";
-      };
+      default = {};
+      description = "A list of all login accounts";
+    };
   };
   config = lib.mkIf cfg.enable {
     mailserver = {
       enable = true;
       fqdn = "mail." + cfg.domain;
-      domains = [ cfg.domain ];
+      domains = [cfg.domain];
       enableSubmissionSsl = false;
 
       loginAccounts = transform_login_accounts cfg.domain cfg.loginAccounts;
-  
+
       certificateScheme = "acme-nginx";
     };
     security.acme.acceptTerms = true;
