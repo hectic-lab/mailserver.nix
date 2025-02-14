@@ -35,7 +35,7 @@
     }: {
       packages.${system} = {};
       devShells.${system}.default = pkgs.mkShell {};
-      nixosModules.${system} = {
+      nixosModules = {
         mailserver = {...}: {
           imports = [
             (import ./mail.nix)
@@ -53,7 +53,7 @@
         nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
-            self.nixosModules.${system}.mailserver
+            self.nixosModules.mailserver
             ({
               pkgs,
               modulesPath,
@@ -162,7 +162,7 @@
         profiles."system" = {
           sshUser = "root";
           path =
-            deploy-rs.lib.${system}.activate.nixos
+            deploy-rs.lib.activate.nixos
             self.nixosConfigurations.default;
           user = "root";
         };
