@@ -22,6 +22,7 @@ in {
           options = {
             hashedPassword = lib.mkOption {
               type = lib.types.str;
+              default = null;
             };
 
             hashedPasswordFile = with lib; mkOption {
