@@ -21,7 +21,7 @@ in {
         lib.types.submodule {
           options = {
             hashedPassword = lib.mkOption {
-              type = lib.types.str;
+              type = lib.types.nullOr lib.types.str;
               default = null;
             };
 
