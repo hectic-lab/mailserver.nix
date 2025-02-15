@@ -23,6 +23,18 @@ in {
             hashedPassword = lib.mkOption {
               type = lib.types.str;
             };
+
+            hashedPasswordFile = with lib; mkOption {
+              type = with types; nullOr str;
+              default = null;
+              defaultText = literalExpression "null";
+              description = ''
+                The full path to a file that contains the hash of the user's
+                password. The file should contain exactly one line, which
+                should be the password in an encrypted form that is suitable
+                for the `chpasswd -e` command.
+              '';
+            };
           };
         }
       );
